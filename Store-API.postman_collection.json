@@ -1,0 +1,194 @@
+{
+  "info": {
+    "name": "Store API",
+    "description": "REST API for product store with authentication and shopping cart",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/products?limit=10&offset=0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["products"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of products to return"
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                },
+                {
+                  "key": "category",
+                  "value": "Electronics",
+                  "disabled": true,
+                  "description": "Filter by category"
+                },
+                {
+                  "key": "brand",
+                  "value": "AudioTech",
+                  "disabled": true,
+                  "description": "Filter by brand"
+                }
+              ]
+            },
+            "description": "Get paginated list of products with optional filters by category and brand"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/products/001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["products", "001"]
+            },
+            "description": "Get a single product by its ID"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"a1b2c3d4\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["users", "login"]
+            },
+            "description": "Login with username and password. Returns user info and authentication token"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Validate Cart Products",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productIds\": [\"001\", \"002\", \"003\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/cart/validate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["cart", "validate"]
+            },
+            "description": "Validate products in cart by their IDs. Returns only valid products with full details"
+          },
+          "response": []
+        },
+        {
+          "name": "Purchase Products",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "Token obtained from login"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productIds\": [\"001\", \"002\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/cart/purchase",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["cart", "purchase"]
+            },
+            "description": "Purchase products. Requires authentication token in Authorization header. Creates a purchase record with user ID, items and total amount"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Purchases",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "Token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/cart/purchases",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["cart", "purchases"]
+            },
+            "description": "Get all purchases made by the authenticated user. Requires authentication token in Authorization header"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

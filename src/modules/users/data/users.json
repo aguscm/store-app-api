@@ -1,0 +1,252 @@
+[
+  {
+    "id": "1",
+    "username": "johndoe",
+    "password": "a1b2c3d4",
+    "name": "John",
+    "surname": "Doe",
+    "bio": "Lorem ipsum dolor sit amet.",
+    "profileImg": "https://randomuser.me/api/portraits/men/1.jpg",
+    "registrationDate": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "2",
+    "username": "janedoe",
+    "password": "a1b2c3d4",
+    "name": "Jane",
+    "surname": "Doe",
+    "bio": "Consectetur adipiscing elit.",
+    "profileImg": "https://randomuser.me/api/portraits/women/2.jpg",
+    "registrationDate": "2025-01-02T00:00:00Z"
+  },
+  {
+    "id": "3",
+    "username": "alicesmith",
+    "password": "a1b2c3d4",
+    "name": "Alice",
+    "surname": "Smith",
+    "bio": "Sed do eiusmod tempor incididunt.",
+    "profileImg": "https://randomuser.me/api/portraits/women/3.jpg",
+    "registrationDate": "2025-01-03T00:00:00Z"
+  },
+  {
+    "id": "4",
+    "username": "bobsmith",
+    "password": "a1b2c3d4",
+    "name": "Bob",
+    "surname": "Smith",
+    "bio": "Ut labore et dolore magna aliqua.",
+    "profileImg": "https://randomuser.me/api/portraits/men/4.jpg",
+    "registrationDate": "2025-01-04T00:00:00Z"
+  },
+  {
+    "id": "5",
+    "username": "charliebrown",
+    "password": "a1b2c3d4",
+    "name": "Charlie",
+    "surname": "Brown",
+    "bio": "Ut enim ad minim veniam.",
+    "profileImg": "https://randomuser.me/api/portraits/men/5.jpg",
+    "registrationDate": "2025-01-05T00:00:00Z"
+  },
+  {
+    "id": "6",
+    "username": "davidjohnson",
+    "password": "a1b2c3d4",
+    "name": "David",
+    "surname": "Johnson",
+    "bio": "Quis nostrud exercitation ullamco.",
+    "profileImg": "https://randomuser.me/api/portraits/men/6.jpg",
+    "registrationDate": "2025-01-06T00:00:00Z"
+  },
+  {
+    "id": "7",
+    "username": "evejohnson",
+    "password": "a1b2c3d4",
+    "name": "Eve",
+    "surname": "Johnson",
+    "bio": "Laboris nisi ut aliquip ex ea commodo.",
+    "profileImg": "https://randomuser.me/api/portraits/women/7.jpg",
+    "registrationDate": "2025-01-07T00:00:00Z"
+  },
+  {
+    "id": "8",
+    "username": "frankmiller",
+    "password": "a1b2c3d4",
+    "name": "Frank",
+    "surname": "Miller",
+    "bio": "Duis aute irure dolor in reprehenderit.",
+    "profileImg": "https://randomuser.me/api/portraits/men/8.jpg",
+    "registrationDate": "2025-01-08T00:00:00Z"
+  },
+  {
+    "id": "9",
+    "username": "gracemiller",
+    "password": "a1b2c3d4",
+    "name": "Grace",
+    "surname": "Miller",
+    "bio": "In voluptate velit esse cillum dolore.",
+    "profileImg": "https://randomuser.me/api/portraits/women/9.jpg",
+    "registrationDate": "2025-01-09T00:00:00Z"
+  },
+  {
+    "id": "10",
+    "username": "hankwilson",
+    "password": "a1b2c3d4",
+    "name": "Hank",
+    "surname": "Wilson",
+    "bio": "Eu fugiat nulla pariatur.",
+    "profileImg": "https://randomuser.me/api/portraits/men/10.jpg",
+    "registrationDate": "2025-01-10T00:00:00Z"
+  },
+  {
+    "id": "11",
+    "username": "ivywilson",
+    "password": "a1b2c3d4",
+    "name": "Ivy",
+    "surname": "Wilson",
+    "bio": "Excepteur sint occaecat cupidatat non proident.",
+    "profileImg": "https://randomuser.me/api/portraits/women/11.jpg",
+    "registrationDate": "2025-01-11T00:00:00Z"
+  },
+  {
+    "id": "12",
+    "username": "jacktaylor",
+    "password": "a1b2c3d4",
+    "name": "Jack",
+    "surname": "Taylor",
+    "bio": "Sunt in culpa qui officia deserunt.",
+    "profileImg": "https://randomuser.me/api/portraits/men/12.jpg",
+    "registrationDate": "2025-01-12T00:00:00Z"
+  },
+  {
+    "id": "13",
+    "username": "karentaylor",
+    "password": "a1b2c3d4",
+    "name": "Karen",
+    "surname": "Taylor",
+    "bio": "Mollit anim id est laborum.",
+    "profileImg": "https://randomuser.me/api/portraits/women/13.jpg",
+    "registrationDate": "2025-01-13T00:00:00Z"
+  },
+  {
+    "id": "14",
+    "username": "leoanderson",
+    "password": "a1b2c3d4",
+    "name": "Leo",
+    "surname": "Anderson",
+    "bio": "Lorem ipsum dolor sit amet.",
+    "profileImg": "https://randomuser.me/api/portraits/men/14.jpg",
+    "registrationDate": "2025-01-14T00:00:00Z"
+  },
+  {
+    "id": "15",
+    "username": "miaanderson",
+    "password": "a1b2c3d4",
+    "name": "Mia",
+    "surname": "Anderson",
+    "bio": "Consectetur adipiscing elit.",
+    "profileImg": "https://randomuser.me/api/portraits/women/15.jpg",
+    "registrationDate": "2025-01-15T00:00:00Z"
+  },
+  {
+    "id": "16",
+    "username": "noahthomas",
+    "password": "a1b2c3d4",
+    "name": "Noah",
+    "surname": "Thomas",
+    "bio": "Sed do eiusmod tempor incididunt.",
+    "profileImg": "https://randomuser.me/api/portraits/men/16.jpg",
+    "registrationDate": "2025-01-16T00:00:00Z"
+  },
+  {
+    "id": "17",
+    "username": "oliviathomas",
+    "password": "a1b2c3d4",
+    "name": "Olivia",
+    "surname": "Thomas",
+    "bio": "Ut labore et dolore magna aliqua.",
+    "profileImg": "https://randomuser.me/api/portraits/women/17.jpg",
+    "registrationDate": "2025-01-17T00:00:00Z"
+  },
+  {
+    "id": "18",
+    "username": "peterjackson",
+    "password": "a1b2c3d4",
+    "name": "Peter",
+    "surname": "Jackson",
+    "bio": "Ut enim ad minim veniam.",
+    "profileImg": "https://randomuser.me/api/portraits/men/18.jpg",
+    "registrationDate": "2025-01-18T00:00:00Z"
+  },
+  {
+    "id": "19",
+    "username": "quinnjackson",
+    "password": "a1b2c3d4",
+    "name": "Quinn",
+    "surname": "Jackson",
+    "bio": "Quis nostrud exercitation ullamco.",
+    "profileImg": "https://randomuser.me/api/portraits/women/19.jpg",
+    "registrationDate": "2025-01-19T00:00:00Z"
+  },
+  {
+    "id": "20",
+    "username": "ryanwhite",
+    "password": "a1b2c3d4",
+    "name": "Ryan",
+    "surname": "White",
+    "bio": "Laboris nisi ut aliquip ex ea commodo.",
+    "profileImg": "https://randomuser.me/api/portraits/men/20.jpg",
+    "registrationDate": "2025-01-20T00:00:00Z"
+  },
+  {
+    "id": "21",
+    "username": "sarawhite",
+    "password": "a1b2c3d4",
+    "name": "Sara",
+    "surname": "White",
+    "bio": "Duis aute irure dolor in reprehenderit.",
+    "profileImg": "https://randomuser.me/api/portraits/women/21.jpg",
+    "registrationDate": "2025-01-21T00:00:00Z"
+  },
+  {
+    "id": "22",
+    "username": "tomharris",
+    "password": "a1b2c3d4",
+    "name": "Tom",
+    "surname": "Harris",
+    "bio": "In voluptate velit esse cillum dolore.",
+    "profileImg": "https://randomuser.me/api/portraits/men/22.jpg",
+    "registrationDate": "2025-01-22T00:00:00Z"
+  },
+  {
+    "id": "23",
+    "username": "umaharris",
+    "password": "a1b2c3d4",
+    "name": "Uma",
+    "surname": "Harris",
+    "bio": "Eu fugiat nulla pariatur.",
+    "profileImg": "https://randomuser.me/api/portraits/women/23.jpg",
+    "registrationDate": "2025-01-23T00:00:00Z"
+  },
+  {
+    "id": "24",
+    "username": "victormartin",
+    "password": "a1b2c3d4",
+    "name": "Victor",
+    "surname": "Martin",
+    "bio": "Excepteur sint occaecat cupidatat non proident.",
+    "profileImg": "https://randomuser.me/api/portraits/men/24.jpg",
+    "registrationDate": "2025-01-24T00:00:00Z"
+  },
+  {
+    "id": "25",
+    "username": "wendymartin",
+    "password": "a1b2c3d4",
+    "name": "Wendy",
+    "surname": "Martin",
+    "bio": "Sunt in culpa qui officia deserunt.",
+    "profileImg": "https://randomuser.me/api/portraits/women/25.jpg",
+    "registrationDate": "2025-01-25T00:00:00Z"
+  }
+]

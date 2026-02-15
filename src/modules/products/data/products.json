@@ -1,0 +1,62 @@
+[
+  {
+    "id": "001",
+    "name": "Wireless Headphones",
+    "description": "High-quality wireless headphones with noise cancellation and 30-hour battery life",
+    "price": 199.99,
+    "category": "Electronics",
+    "stock": 45,
+    "imageUrl": "https://images.example.com/headphones.jpg",
+    "brand": "AudioTech",
+    "rating": 4.8,
+    "createdAt": "2025-12-01T10:30:00Z"
+  },
+  {
+    "id": "002",
+    "name": "Comfortable Running Shoes",
+    "description": "Lightweight and durable running shoes with advanced cushioning technology",
+    "price": 129.99,
+    "category": "Fashion",
+    "stock": 78,
+    "imageUrl": "https://images.example.com/shoes.jpg",
+    "brand": "SportGear",
+    "rating": 4.6,
+    "createdAt": "2025-11-15T14:20:00Z"
+  },
+  {
+    "id": "003",
+    "name": "Smart Thermostat",
+    "description": "Wi-Fi enabled smart thermostat with energy-saving features and mobile app control",
+    "price": 249.99,
+    "category": "Home & Garden",
+    "stock": 32,
+    "imageUrl": "https://images.example.com/thermostat.jpg",
+    "brand": "SmartHome Pro",
+    "rating": 4.7,
+    "createdAt": "2025-10-22T09:15:00Z"
+  },
+  {
+    "id": "004",
+    "name": "Professional Yoga Mat",
+    "description": "Non-slip eco-friendly yoga mat with carrying strap, perfect for all practice levels",
+    "price": 59.99,
+    "category": "Sports",
+    "stock": 120,
+    "imageUrl": "https://images.example.com/yoga-mat.jpg",
+    "brand": "YogaZen",
+    "rating": 4.5,
+    "createdAt": "2025-09-10T11:45:00Z"
+  },
+  {
+    "id": "005",
+    "name": "The Ultimate Programming Guide",
+    "description": "Comprehensive guide covering modern programming concepts and best practices",
+    "price": 44.99,
+    "category": "Books",
+    "stock": 156,
+    "imageUrl": "https://images.example.com/programming-book.jpg",
+    "brand": "Tech Knowledge Press",
+    "rating": 4.9,
+    "createdAt": "2025-08-05T16:30:00Z"
+  }
+]
