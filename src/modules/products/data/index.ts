@@ -3,11 +3,31 @@ import type { ProductCategory } from "../helpers";
 import { isValidCategory } from "../helpers";
 import productsJson from "./products.json";
 
+let baseUrl = "http://localhost:3000";
+
 let productsList: IProduct[] = productsJson.map(product => ({
     ...product,
     category: product.category as ProductCategory,
     createdAt: new Date(product.createdAt)
 }));
+
+function setBaseUrl(url: string): void {
+    baseUrl = url;
+}
+
+function resolveImageUrl(imageUrl: string): string {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+        return imageUrl;
+    }
+    return `${baseUrl}${imageUrl}`;
+}
+
+function resolveProductImageUrl(product: IProduct): IProduct {
+    return {
+        ...product,
+        imageUrl: resolveImageUrl(product.imageUrl)
+    };
+}
 
 function validateProductFields(product: Omit<IProduct, 'id'>): { valid: boolean; message?: string } {
     const requiredFields = ['name', 'description', 'price', 'category', 'stock', 'imageUrl', 'brand', 'createdAt'];
@@ -47,7 +67,7 @@ function getProducts(limit: number = 10, offset: number = 0, filterBy?: IProduct
     }
 
     const total = filtered.length;
-    const items = filtered.slice(offset, offset + limit);
+    const items = filtered.slice(offset, offset + limit).map(resolveProductImageUrl);
 
     return {
         items,
@@ -60,7 +80,8 @@ function getProducts(limit: number = 10, offset: number = 0, filterBy?: IProduct
 }
 
 function getProductById(productId: string): IProduct {
-    return productsList.find((product: IProduct) => product.id === productId);
+    const product = productsList.find((product: IProduct) => product.id === productId);
+    return product ? resolveProductImageUrl(product) : null;
 }
 
 function addProduct(product: Omit<IProduct, 'id'>): IProduct {
@@ -73,7 +94,7 @@ function addProduct(product: Omit<IProduct, 'id'>): IProduct {
     };
 
     productsList.push(newProduct);
-    return newProduct;
+    return resolveProductImageUrl(newProduct);
 }
 
 function editProduct(id: string, updates: Partial<IProduct>): IProduct {
@@ -90,7 +111,7 @@ function editProduct(id: string, updates: Partial<IProduct>): IProduct {
         ...updates
     };
 
-    return productsList[productIndex];
+    return resolveProductImageUrl(productsList[productIndex]);
 }
 
 function deleteProduct(id: string): boolean {
@@ -106,4 +127,5 @@ export {
     editProduct,
     deleteProduct,
     validateProductFields,
+    setBaseUrl,
 }
