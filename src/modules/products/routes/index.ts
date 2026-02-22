@@ -5,9 +5,10 @@ import { isValidCategory } from "../helpers";
 import { ERRORS } from "../../../helpers/errors";
 
 const router = express.Router();
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // GET - Get all products with pagination and filtering
-router.route("/").get(function (req, res) {
+router.route("/").get(async function (req, res) {
   try {
     const limit = parseInt(req.query.limit as string) || 10;
     const offset = parseInt(req.query.offset as string) || 0;
@@ -40,6 +41,8 @@ router.route("/").get(function (req, res) {
     if (req.query.brand) {
       filterBy.brand = req.query.brand as string;
     }
+
+    await delay(1000);
 
     const result = getProducts(limit, offset, Object.keys(filterBy).length > 0 ? filterBy : undefined);
 
