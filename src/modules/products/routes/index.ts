@@ -1,5 +1,5 @@
 import express from "express";
-import type { IProduct, IProductFilter } from "../interfaces";
+import type { IProduct, IProductFilter } from "../interfaces/index";
 import { getProducts, getProductById, addProduct, editProduct, deleteProduct, validateProductFields } from "../data";
 import { isValidCategory } from "../helpers";
 import { ERRORS } from "../../../helpers/errors";
@@ -44,7 +44,7 @@ router.route("/").get(function (req, res) {
     const result = getProducts(limit, offset, Object.keys(filterBy).length > 0 ? filterBy : undefined);
 
     // Return 204 No Content if offset is beyond total products
-    if (offset >= result.total && result.total > 0) {
+    if (offset >= result.paginator.total && result.paginator.total > 0) {
       res.status(204).send();
       return;
     }

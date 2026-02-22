@@ -1,4 +1,4 @@
-import type { IProduct, IProductFilter, IPaginator } from "../interfaces";
+import type { IProduct, IProductFilter, IPaginator } from "../interfaces/index";
 import type { ProductCategory } from "../helpers";
 import { isValidCategory } from "../helpers";
 import productsJson from "./products.json";
@@ -11,9 +11,9 @@ let productsList: IProduct[] = productsJson.map(product => ({
 
 function validateProductFields(product: Omit<IProduct, 'id'>): { valid: boolean; message?: string } {
     const requiredFields = ['name', 'description', 'price', 'category', 'stock', 'imageUrl', 'brand', 'createdAt'];
-    
+
     for (const field of requiredFields) {
-        if (product[field] === undefined || product[field] === null || 
+        if (product[field] === undefined || product[field] === null ||
             (typeof product[field] === 'string' && product[field].trim() === '')) {
             return { valid: false, message: `${field} is required` };
         }
@@ -30,7 +30,7 @@ function validateProductFields(product: Omit<IProduct, 'id'>): { valid: boolean;
     if (typeof product.stock !== 'number' || product.stock < 0) {
         return { valid: false, message: 'Stock must be a positive number' };
     }
-    
+
     return { valid: true };
 }
 
@@ -51,9 +51,11 @@ function getProducts(limit: number = 10, offset: number = 0, filterBy?: IProduct
 
     return {
         items,
-        limit,
-        offset,
-        total
+        paginator: {
+            limit,
+            offset,
+            total
+        }
     };
 }
 
@@ -64,30 +66,30 @@ function getProductById(productId: string): IProduct {
 function addProduct(product: Omit<IProduct, 'id'>): IProduct {
     const validation = validateProductFields(product);
     if (!validation.valid) return null;
-    
+
     const newProduct: IProduct = {
         id: Math.random().toString(36).substring(2, 11),
         ...product
     };
-    
+
     productsList.push(newProduct);
     return newProduct;
 }
 
 function editProduct(id: string, updates: Partial<IProduct>): IProduct {
     const productIndex = productsList.findIndex((product: IProduct) => product.id === id);
-    
+
     if (productIndex === -1) return null;
 
     if (updates.category && !isValidCategory(updates.category)) {
         return null;
     }
-    
+
     productsList[productIndex] = {
         ...productsList[productIndex],
         ...updates
     };
-    
+
     return productsList[productIndex];
 }
 

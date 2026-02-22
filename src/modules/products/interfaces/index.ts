@@ -20,7 +20,9 @@ export interface IProductFilter {
 
 export interface IPaginator<T> {
   items: T[];
-  limit: number;
-  offset: number;
-  total: number;
+  paginator: {
+    limit: number;
+    offset: number;
+    total: number;
+  }
 }
