@@ -1,22 +1,52 @@
 import express from "express";
-import { validateCartProducts, createPurchase, getPurchasesByUserId } from "../data";
+import { getCartProducts, createPurchase, getPurchasesByUserId } from "../data";
 import { requireLogin } from "../../users";
 import { ERRORS } from "../../../helpers/errors";
 
 const router = express.Router();
 
-// POST - Validate cart products
-router.route("/validate").post(function (req, res) {
+// GET - Get cart products
+router.route("/").get(function (req, res) {
   try {
-    const { productIds } = req.body;
+    const rawItems = req.query.items;
 
-    if (!productIds || !Array.isArray(productIds) || productIds.length === 0) {
+    if (!rawItems || typeof rawItems !== "string") {
       const error = ERRORS.EMPTY_CART;
       res.status(error.status).json({ id: error.id, message: error.message });
       return;
     }
 
-    const validProducts = validateCartProducts(productIds);
+    let items;
+
+    try {
+      items = JSON.parse(rawItems);
+    } catch {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    const hasInvalidItem = items.some((item) => {
+      const hasInvalidProductId = !item?.productId || typeof item.productId !== "string";
+      const hasInvalidQuantity = typeof item?.quantity !== "number" || item.quantity <= 0 || !Number.isInteger(item.quantity);
+      return hasInvalidProductId || hasInvalidQuantity;
+    });
+
+    if (hasInvalidItem) {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    const productIds = items.map((item) => item.productId);
+
+    const validProducts = getCartProducts(productIds);
 
     if (validProducts.length === 0) {
       const error = ERRORS.EMPTY_CART;
@@ -34,9 +64,21 @@ router.route("/validate").post(function (req, res) {
 // POST - Purchase products
 router.route("/purchase").post(requireLogin, function (req, res) {
   try {
-    const { productIds } = req.body;
-    
-    if (!productIds || !Array.isArray(productIds) || productIds.length === 0) {
+    const { items } = req.body;
+
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    const hasInvalidItem = items.some((item) => {
+      const hasInvalidProductId = !item?.productId || typeof item.productId !== "string";
+      const hasInvalidQuantity = typeof item?.quantity !== "number" || item.quantity <= 0 || !Number.isInteger(item.quantity);
+      return hasInvalidProductId || hasInvalidQuantity;
+    });
+
+    if (hasInvalidItem) {
       const error = ERRORS.EMPTY_CART;
       res.status(error.status).json({ id: error.id, message: error.message });
       return;
@@ -46,7 +88,7 @@ router.route("/purchase").post(requireLogin, function (req, res) {
     const userId = (req as any).user.userId;
 
     // Create purchase
-    const purchase = createPurchase(userId, productIds);
+    const purchase = createPurchase(userId, items);
 
     if (!purchase) {
       const error = ERRORS.EMPTY_CART;

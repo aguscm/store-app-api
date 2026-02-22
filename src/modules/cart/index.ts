@@ -1,2 +1,2 @@
-export type { IPurchase, ICartItem, IValidateCartRequest } from './interfaces';
-export { validateCartProducts, createPurchase, getPurchasesByUserId } from './data';
+export type { IPurchase, ICartItem, IValidateCartRequest, IPurchaseItemRequest, IPurchaseRequest } from './interfaces';
+export { getCartProducts, createPurchase, getPurchasesByUserId } from './data';

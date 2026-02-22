@@ -86,16 +86,17 @@ POST /users/login
 
 ### Cart
 
-#### Validate Cart Products
+#### Get Cart Products
 ```
-POST /cart/validate
+GET /cart
 ```
 
-**Body:**
-```json
-{
-  "productIds": ["001", "002", "003"]
-}
+**Query Parameters:**
+- `items`: JSON string con un array de objetos `{ productId, quantity }`
+
+**Example:**
+```
+GET /cart?items=[{"productId":"001","quantity":2},{"productId":"002","quantity":1},{"productId":"003","quantity":1}]
 ```
 
 **Response:**
@@ -119,7 +120,10 @@ Authorization: Bearer {token}
 **Body:**
 ```json
 {
-  "productIds": ["001", "002"]
+  "items": [
+    { "productId": "001", "quantity": 2 },
+    { "productId": "002", "quantity": 1 }
+  ]
 }
 ```
 

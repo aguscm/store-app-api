@@ -16,9 +16,13 @@
             "url": {
               "raw": "http://localhost:3000/products?limit=10&offset=0",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["products"],
+              "path": [
+                "products"
+              ],
               "query": [
                 {
                   "key": "limit",
@@ -56,9 +60,14 @@
             "url": {
               "raw": "http://localhost:3000/products/001",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["products", "001"]
+              "path": [
+                "products",
+                "001"
+              ]
             },
             "description": "Get a single product by its ID"
           },
@@ -86,9 +95,14 @@
             "url": {
               "raw": "http://localhost:3000/users/login",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["users", "login"]
+              "path": [
+                "users",
+                "login"
+              ]
             },
             "description": "Login with username and password. Returns user info and authentication token"
           },
@@ -100,27 +114,29 @@
       "name": "Cart",
       "item": [
         {
-          "name": "Validate Cart Products",
+          "name": "Get Cart Products",
           "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"productIds\": [\"001\", \"002\", \"003\"]\n}"
-            },
+            "method": "GET",
+            "header": [],
             "url": {
-              "raw": "http://localhost:3000/cart/validate",
+              "raw": "http://localhost:3000/cart?items=%5B%7B%22productId%22%3A%22001%22%2C%22quantity%22%3A2%7D%2C%7B%22productId%22%3A%22002%22%2C%22quantity%22%3A1%7D%2C%7B%22productId%22%3A%22003%22%2C%22quantity%22%3A1%7D%5D",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["cart", "validate"]
+              "path": [
+                "cart"
+              ],
+              "query": [
+                {
+                  "key": "items",
+                  "value": "[{\"productId\":\"001\",\"quantity\":2},{\"productId\":\"002\",\"quantity\":1},{\"productId\":\"003\",\"quantity\":1}]",
+                  "description": "JSON string with cart items"
+                }
+              ]
             },
-            "description": "Validate products in cart by their IDs. Returns only valid products with full details"
+            "description": "Get cart products using query param items (JSON string with productId and quantity). Returns only valid products with full details"
           },
           "response": []
         },
@@ -141,16 +157,21 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"productIds\": [\"001\", \"002\"]\n}"
+              "raw": "{\n  \"items\": [\n    { \"productId\": \"001\", \"quantity\": 2 },\n    { \"productId\": \"002\", \"quantity\": 1 }\n  ]\n}"
             },
             "url": {
               "raw": "http://localhost:3000/cart/purchase",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["cart", "purchase"]
+              "path": [
+                "cart",
+                "purchase"
+              ]
             },
-            "description": "Purchase products. Requires authentication token in Authorization header. Creates a purchase record with user ID, items and total amount"
+            "description": "Purchase products using items with productId and quantity. Requires authentication token in Authorization header. Creates a purchase record with user ID, items and total amount"
           },
           "response": []
         },
@@ -168,9 +189,14 @@
             "url": {
               "raw": "http://localhost:3000/cart/purchases",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["cart", "purchases"]
+              "path": [
+                "cart",
+                "purchases"
+              ]
             },
             "description": "Get all purchases made by the authenticated user. Requires authentication token in Authorization header"
           },
