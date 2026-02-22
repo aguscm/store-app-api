@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "npx ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild index.ts --platform=node --bundle --minify --outfile=built/index.js",
+    "build": "esbuild src/index.ts --platform=node --bundle --minify --outfile=build/index.js",
+    "postbuild": "node scripts/copy-images.js",
     "start": "node built/index.js"
   },
   "author": "Augusto Crespo",
