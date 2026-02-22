@@ -101,10 +101,13 @@ GET /cart?items=[{"productId":"001","quantity":2},{"productId":"002","quantity":
 
 **Response:**
 ```json
-{
-  "validProducts": [...],
-  "total": 2
-}
+[
+  {
+    "id": "001",
+    "name": "Wireless Headphones",
+    "price": 79.99
+  }
+]
 ```
 
 #### Purchase Products
@@ -131,13 +134,28 @@ Authorization: Bearer {token}
 ```json
 {
   "message": "Purchase completed successfully",
-  "purchase": {
-    "id": "xyz789",
-    "userId": "001",
-    "items": [...],
-    "totalAmount": 159.98,
-    "purchaseDate": "2026-02-15T10:30:00.000Z"
-  }
+  "purchaseId": "xyz789"
+}
+```
+
+#### Get Purchase by ID
+```
+GET /cart/purchases/:id
+```
+
+**Headers:**
+```
+Authorization: Bearer {token}
+```
+
+**Response:**
+```json
+{
+  "id": "xyz789",
+  "userId": "001",
+  "items": [...],
+  "totalAmount": 159.98,
+  "purchaseDate": "2026-02-15T10:30:00.000Z"
 }
 ```
 

@@ -1,5 +1,5 @@
 import express from "express";
-import { getCartProducts, createPurchase, getPurchasesByUserId } from "../data";
+import { getCartProducts, createPurchase, getPurchasesByUserId, getPurchaseById } from "../data";
 import { requireLogin } from "../../users";
 import { ERRORS } from "../../../helpers/errors";
 
@@ -54,7 +54,7 @@ router.route("/").get(function (req, res) {
       return;
     }
 
-    res.status(200).json({ products: validProducts });
+    res.status(200).json(validProducts);
   } catch (error) {
     const err = ERRORS.INTERNAL_SERVER_ERROR;
     res.status(err.status).json({ id: err.id, message: err.message, error: error.message });
@@ -98,7 +98,7 @@ router.route("/purchase").post(requireLogin, function (req, res) {
 
     res.status(201).json({
       message: "Purchase completed successfully",
-      purchase
+      purchaseId: purchase.id
     });
   } catch (error) {
     const err = ERRORS.INTERNAL_SERVER_ERROR;
@@ -119,6 +119,33 @@ router.route("/purchases").get(requireLogin, function (req, res) {
       purchases,
       total: purchases.length
     });
+  } catch (error) {
+    const err = ERRORS.INTERNAL_SERVER_ERROR;
+    res.status(err.status).json({ id: err.id, message: err.message, error: error.message });
+  }
+});
+
+// GET - Get purchase by ID
+router.route("/purchases/:id").get(requireLogin, function (req, res) {
+  try {
+    const purchaseId = req.params.id;
+    const userId = (req as any).user.userId;
+
+    if (!purchaseId) {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    const purchase = getPurchaseById(purchaseId, userId);
+
+    if (!purchase) {
+      const error = ERRORS.EMPTY_CART;
+      res.status(error.status).json({ id: error.id, message: error.message });
+      return;
+    }
+
+    res.status(200).json(purchase);
   } catch (error) {
     const err = ERRORS.INTERNAL_SERVER_ERROR;
     res.status(err.status).json({ id: err.id, message: err.message, error: error.message });

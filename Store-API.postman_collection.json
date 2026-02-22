@@ -136,7 +136,7 @@
                 }
               ]
             },
-            "description": "Get cart products using query param items (JSON string with productId and quantity). Returns only valid products with full details"
+            "description": "Get cart products using query param items (JSON string with productId and quantity). Returns the valid products array directly"
           },
           "response": []
         },
@@ -171,7 +171,35 @@
                 "purchase"
               ]
             },
-            "description": "Purchase products using items with productId and quantity. Requires authentication token in Authorization header. Creates a purchase record with user ID, items and total amount"
+            "description": "Purchase products using items with productId and quantity. Requires authentication token in Authorization header. Returns purchaseId"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Purchase by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "Token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/cart/purchases/xyz789",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cart",
+                "purchases",
+                "xyz789"
+              ]
+            },
+            "description": "Get a purchase by its ID. Requires authentication token in Authorization header"
           },
           "response": []
         },

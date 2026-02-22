@@ -57,8 +57,23 @@ function getPurchasesByUserId(userId: string): IPurchase[] {
     return purchasesList.filter(purchase => purchase.userId === userId);
 }
 
+function getPurchaseById(purchaseId: string, userId?: string): IPurchase | null {
+    const purchase = purchasesList.find((entry) => entry.id === purchaseId);
+
+    if (!purchase) {
+        return null;
+    }
+
+    if (userId && purchase.userId !== userId) {
+        return null;
+    }
+
+    return purchase;
+}
+
 export {
     getCartProducts,
     createPurchase,
-    getPurchasesByUserId
+    getPurchasesByUserId,
+    getPurchaseById
 }
